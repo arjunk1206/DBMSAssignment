@@ -1,0 +1,85 @@
+desc users;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ AID                                       NOT NULL NUMBER
+ UNAME                                              VARCHAR2(20)
+ AGE                                                NUMBER
+ DOOR#                                              VARCHAR2(10)
+ STREET                                             VARCHAR2(10)
+ CITY                                               VARCHAR2(10)
+ STATE                                              VARCHAR2(10)
+ PINCODE                                            NUMBER
+
+SQL> desc user_cred;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ AID                                       NOT NULL NUMBER
+ USERID                                             NUMBER
+ PASSWORD                                           VARCHAR2(20)
+
+SQL> desc phone_no;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ AID                                       NOT NULL NUMBER
+ PHONE                                              NUMBER
+
+SQL> desc tenant;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ AID                                       NOT NULL NUMBER
+ NUM_PROP_RENTED                                    NUMBER
+
+SQL> desc owner;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ AID                                       NOT NULL NUMBER
+ NUM_PROP_LISTED                                    NUMBER
+
+SQL> desc property;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER
+ OWNER_ID                                           NUMBER
+ AV_TILL                                            DATE
+ AV_FROM                                            DATE
+ LOCALITY                                           VARCHAR2(20)
+ NUMFLOORS                                          NUMBER
+ ADDRESS                                            VARCHAR2(20)
+ YEAR_CONSTRUCTION                                  NUMBER
+ TOTAL_AREA                                         NUMBER
+ PLINTH_AREA                                        NUMBER
+
+SQL> desc registers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ OWNER_ID                                  NOT NULL NUMBER
+ PID                                       NOT NULL NUMBER
+ LISTDATE                                  NOT NULL DATE
+ DEPOSIT                                   NOT NULL NUMBER
+
+SQL> desc rents;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ TENANTID                                  NOT NULL NUMBER
+ PID                                       NOT NULL NUMBER
+ STARTDATE                                          DATE
+ ENDDATE                                            DATE
+ AGENCYCOMM                                         NUMBER
+ RENTPERMONTH                                       NUMBER
+ HIKEPERCENT                                        NUMBER
+
+SQL> desc PROPERTY_HISTORY;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER
+ TENANTID                                  NOT NULL NUMBER
+ STARTDATE                                 NOT NULL DATE
+ RENTPERMONTH                                       NUMBER
+ AGENCYCOMM                                         NUMBER
+ HIKE_PERC                                          NUMBER
+
+SQL> desc COMMERCIAL;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                                NUMBER
+ PTYPE                                              VARCHAR2(10)

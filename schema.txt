@@ -1,0 +1,47 @@
+CREATE TABLE users (
+    user_id NUMBER PRIMARY KEY,
+    adhar_id VARCHAR2(12) UNIQUE NOT NULL,
+    name VARCHAR2(100) NOT NULL,
+    age NUMBER NOT NULL,
+    address VARCHAR2(500) NOT NULL,
+    phone_number VARCHAR2(20) NOT NULL,
+    login_id VARCHAR2(50) UNIQUE NOT NULL,
+    password VARCHAR2(50) NOT NULL,
+    user_type VARCHAR2(10) NOT NULL
+);
+
+CREATE TABLE properties (
+    property_id NUMBER PRIMARY KEY,
+    property_type VARCHAR2(20) NOT NULL,
+    owner_id NUMBER REFERENCES users(user_id) NOT NULL,
+    available_from DATE NOT NULL,
+    available_till DATE,
+    rent_pm NUMBER NOT NULL,
+    annual_hike NUMBER NOT NULL,
+    total_area NUMBER NOT NULL,
+    plinth_area NUMBER NOT NULL,
+    bedrooms NUMBER,
+    floors NUMBER,
+    year_of_construction NUMBER NOT NULL,
+    locality VARCHAR2(50) NOT NULL,
+    address VARCHAR2(500) NOT NULL,
+    other_facilities VARCHAR2(1000)
+);
+
+CREATE TABLE renting_history (
+    renting_id NUMBER PRIMARY KEY,
+    property_id NUMBER REFERENCES properties(property_id) NOT NULL,
+    tenant_id NUMBER REFERENCES users(user_id) NOT NULL,
+    rent_pm NUMBER NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    yearly_hike_in_rent NUMBER,
+    agency_commission NUMBER,
+    other_info VARCHAR2(1000)
+);
+
+CREATE TABLE managers (
+    manager_id NUMBER PRIMARY KEY REFERENCES users(user_id)
+);
+
+ALTER TABLE users ADD CONSTRAINT check_user_type CHECK (user_type IN ('owner', 'tenant', 'manager', 'dba'));
